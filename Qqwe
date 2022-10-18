@@ -1,0 +1,38 @@
+(*Q1*)
+datatype expr = Var of Atom.atom
+	      | Apply of expr*expr
+	      | Abstract of Atom.atom*expr
+
+(*Q2
+*)
+fun free (Var(x:Atom.atom)) = AtomSet.singleton (x:Atom.atom)
+  | free (Apply(e1,e2)) = AtomSet.union (free e1,free e2)
+  | free (Abstract(x:Atom.atom,e))= AtomSet.subtract (free e,x)
+
+fun bound (Var(x:Atom.atom)) = AtomSet.empty
+  | bound (Apply(e1,e2)) = AtomSet.intersection (bound e1, bound e2)
+  | bound (Abstract(x:Atom.atom,e)) = AtomSet.add (bound e,x)
+
+(*Q3
+*)
+fun subst (Var(X)) (x:Atom.atom) e2 = if(Atom.compare(x,X)=EQUAL) then e2
+				      else
+					  Var(X)
+  | subst (Apply(e,e1)) (x:Atom.atom) e2 = Apply(subst e x e2,subst e1 x e2)
+  | subst (Abstract(X,e)) (x:Atom.atom) e2 = if(Atom.compare(x,X)=EQUAL) then Abstract(X,e)
+					else
+					    Abstract(X,subst e x e2)
+				  
+
+(*Q4
+*)						     
+				
+fun diag (str1:string)(str2:string) = if (String.isPrefix str1 str2) then (str2 ^ "a")
+                                      else (str1 ^ "a")
+
+fun diagA s a = diag s (Atom.toString a)
+
+fun fresh Aset = let fun auxil(a:Atom.atom,s:string) = diagA s a
+		  in
+		      Atom.atom(foldl auxil "a" Aset)
+		  end
