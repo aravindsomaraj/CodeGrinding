@@ -12,7 +12,7 @@ public:
         if(area > m)
             m = area;
         
-        if(height[l]>height[r])
+        if(height[l]>height[r])                  //2 pointers, updating only the pointer that can increase area
             return max(m,Area(height,l,r-1));
         else
             return max(m,Area(height,l+1,r));

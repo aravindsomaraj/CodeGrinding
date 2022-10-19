@@ -10,10 +10,10 @@ public:
         for(int i=0;i<n;i++){
             string che=strs[i];
             sort(strs[i].begin(),strs[i].end());
-            mp[strs[i]].push_back(che);
+            mp[strs[i]].push_back(che);             //pushing each string into the sorted index position of the string in the map
         }
         for(auto it:mp){
-            ans.push_back(it.second);
+            ans.push_back(it.second);               //pushing into ans, groupwise
         }
         return ans;
     }

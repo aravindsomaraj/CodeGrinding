@@ -22,6 +22,19 @@ public:
                 if(word1[i-1] == word2[j-1])
                     dp[i][j] = dp[i-1][j-1];
                 else
+                    /*
+
+                    If word1[i - 1] != word2[j - 1], we need to consider three cases.
+
+                    Replace word1[i - 1] by word2[j - 1] (dp[i][j] = dp[i - 1][j - 1] + 1);
+                    If word1[0..i - 1) = word2[0..j) then delete word1[i - 1] (dp[i][j] = dp[i - 1][j] + 1);
+                    If word1[0..i) + word2[j - 1] = word2[0..j) then insert word2[j - 1] to word1[0..i) (dp[i][j] = dp[i][j - 1] + 1).
+                    
+
+                    So when word1[i - 1] != word2[j - 1], dp[i][j] will just be the minimum of the above three cases.
+                    
+                    */
+
                     dp[i][j] = min({dp[i-1][j-1],dp[i][j-1],dp[i-1][j]}) + 1;
             }
         }

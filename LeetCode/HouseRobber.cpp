@@ -6,7 +6,7 @@ public:
             return;
         
         
-        dp[i] = max(dp[i+2]+nums[i], dp[i+1]);
+        dp[i] = max(dp[i+2]+nums[i], dp[i+1]);    //taking curr house + second house OR next house only
         Solve(nums,i-1,dp);
         
             

@@ -31,7 +31,7 @@ public:
                 l2=l2->next;
             }
             
-            sum+=carry;
+            sum+=carry;        //adding l1,l2, and carry at that position and evaluating carry and proper digit
             carry=sum/10;
             sum = sum%10;
             

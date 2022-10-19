@@ -13,7 +13,7 @@ void Solve(vector<char> s, int n, int i, int& c)
             cout << i;
         cout << "\n";
         Solve(s,n,j,c);
-        s[j]='0';
+        s[j]='0';       //backtracking
     }
 
 }

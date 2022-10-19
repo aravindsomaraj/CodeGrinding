@@ -12,6 +12,11 @@ public:
     }
     int rob(vector<int>& nums) {
         
+        /*
+        Since houses are in a circle, House #1 and House #n cannot be both robbed together.
+        So, rob Houses (1 to n-1) or Houses (2 to n).
+        Essentially HouseRobber problem in two instances.
+        */
         int n = nums.size();
         vector<int> dp (n+1,0);
         
@@ -22,12 +27,12 @@ public:
         dp[n-1]=nums[n-1];
         
         Solve(nums,n-2,dp);
-        int val1 = dp[1];
+        int val1 = dp[1];           //For houses [2] to [n]
         
         dp[n-2]=nums[n-2];
         dp[n-1]=0;
         Solve(nums,n-3,dp);
-        int val2 = dp[0];
+        int val2 = dp[0];           //For houses [1] to [n-1]
         
         return max(val1,val2);
         

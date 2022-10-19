@@ -3,7 +3,7 @@ public:
     
     void Solve(int i, vector<vector<int>>& a,vector<int>& arr, vector<int>& temp, int target)
     {
-        if(target==0)
+        if(target==0)               //condition satisfied, set of vectors is pushed
         {
             a.push_back(temp);
             return;
@@ -15,12 +15,12 @@ public:
         if(i==arr.size())
             return;
         
-        Solve(i+1,a,arr,temp,target);
+        Solve(i+1,a,arr,temp,target);   
         
-        temp.push_back(arr[i]);
+        temp.push_back(arr[i]);             //pushing selected candidate to temp vector
         
-        Solve(i,a,arr,temp,target-arr[i]);
-        temp.pop_back();
+        Solve(i,a,arr,temp,target-arr[i]);  //repeating the same candidate 
+        temp.pop_back();                    //backtracking
         
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {

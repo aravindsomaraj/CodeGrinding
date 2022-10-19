@@ -21,7 +21,7 @@ public:
             curr=curr->next;
         }
         
-        int index = size-n+1;
+        int index = size-n+1;     //index from the front
         if(index==1)
             return head->next;
         curr=head->next;

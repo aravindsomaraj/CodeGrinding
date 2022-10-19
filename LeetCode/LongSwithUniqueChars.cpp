@@ -11,18 +11,18 @@ public:
         
         for(int i=0;i<s.size();i++)
         {
-            mp[s[i]]++;
+            mp[s[i]]++;                 //updating count in map
             cout << s[i];
             
             if(mp[s[i]]!=1)
             {
-                while(mp[s[i]]!=1)
+                while(mp[s[i]]!=1)     //resetting start to new posn, also decrementing occurences of all prev characters
                 {
                     mp[s[start]]--;
                     start++;
                 }
             }
-            l=i-start+1;
+            l=i-start+1;                //current length
             if(l>maxl)
             {
                 maxl=l;

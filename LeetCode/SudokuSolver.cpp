@@ -4,15 +4,15 @@ public:
     bool Solve(vector<vector<char>>& board, int i, int j, vector<vector<int>>& row, vector<vector<int>>& col, vector<vector<int>>& blo)
     {
         if(i==9)
-            return true;    
-        if(board[i][j]!='.')
+            return true;    //returns only if whole sudoku is solved
+        if(board[i][j]!='.') 
         {
             if(j==8)
-                return Solve(board,i+1,0,row,col,blo);
+                return Solve(board,i+1,0,row,col,blo);   //next row
             else
-                return Solve(board,i,j+1,row,col,blo);
+                return Solve(board,i,j+1,row,col,blo);   //next index, same row
         }
-        else
+        else              //Value to be placed
         {
             for(int x=1; x<=9; x++)
             {
@@ -29,7 +29,7 @@ public:
                     if(var==true)
                         return true;
                     
-                
+                    /* if var is false, backtrack, remove the value that was input and make the index eligible for the next iteration*/
                     board[i][j] = '.';
                     row[i][x] = col[x][j] = blo[(i/3)*3+(j/3)][x] = 1;
                     
@@ -43,7 +43,7 @@ public:
     void solveSudoku(vector<vector<char>>& board) {
         
         vector<int> temp (10,1);
-        vector<vector<int>> row (10,temp);
+        vector<vector<int>> row (10,temp);         //hash tables for row, coloumn, block
         vector<vector<int>> col (10,temp);
         vector<vector<int>> blo (10,temp);
         
@@ -56,9 +56,10 @@ public:
                 if(board[i][j]=='.')
                     continue;
                 
+                //a given value is found
                 t = board[i][j]-48;
                 
-                row[i][t] = col [t][j] = blo[(i/3)*3+(j/3)][t] = 0;
+                row[i][t] = col [t][j] = blo[(i/3)*3+(j/3)][t] = 0;   //updating the hash table values
                     
             }
         }

@@ -2,7 +2,7 @@ class Solution {
 public:
     void Solve(vector<string>& a, string s, int n, int i)
     {
-        if(i==n)
+        if(i==n)    // if all maximum possible '(' are present, then add remaining ')'s.
         {
             while(s.size()!=(2*n))
             {
@@ -16,7 +16,7 @@ public:
     
         Solve(a,s,n,i+1);
                   
-        s.pop_back();
+        s.pop_back();       //backtracking
         
         if(2*i == s.size())
             return ;

@@ -17,7 +17,7 @@ public:
             return;
         
         Solve(root->left,ans);
-        ans.push_back(root->val);
+        ans.push_back(root->val);   //Listing Tree inorder
         Solve(root->right,ans);
         
     }
@@ -28,7 +28,7 @@ public:
         
         for(int i=0; i<ans.size()-1;i++)
         {
-            if(ans[i]>=ans[i+1])
+            if(ans[i]>=ans[i+1])    //checking sort condition       
                 return false;
         }
         

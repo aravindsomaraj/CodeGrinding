@@ -28,7 +28,7 @@ public:
                 if(j<nums.size() && dp[j]!=0)
                 {
                     // update(); //find min jump to target
-                    if((1+dp[j])<max)
+                    if((1+dp[j])<max)           // end to first memoization
                         max=1+dp[j];
                 }
             }
